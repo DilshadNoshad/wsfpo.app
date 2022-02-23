@@ -5,7 +5,9 @@ const VoteRegister = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    password: "",
+    description: "",
+    type: "",
+    rate: "",
   });
 
   const handleChange = (e) => {
@@ -17,8 +19,8 @@ const VoteRegister = () => {
   };
 
   const register = () => {
-    const { name, email, password } = user;
-    if (name && email && password) {
+    const { name, email, description, type, rate } = user;
+    if (name && email && description && type && rate) {
       axios
         .post("https://react-booking-demo.herokuapp.com/register", user)
         .then((res) => console.log(res));
@@ -62,15 +64,41 @@ const VoteRegister = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
-              Password
+            <label for="exampleInputDescription1" className="form-label">
+              Description
             </label>
             <input
-              type="password"
+              type="text"
               className="form-control"
-              id="exampleInputPassword1"
-              name="password"
-              value={user.password}
+              id="exampleInputDescription1"
+              name="description"
+              value={user.description}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label for="exampleInputType1" className="form-label">
+              Type
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputType1"
+              name="type"
+              value={user.type}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label for="exampleInputRate1" className="form-label">
+              Rate
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputRate1"
+              name="rate"
+              value={user.rate}
               onChange={handleChange}
             />
           </div>
