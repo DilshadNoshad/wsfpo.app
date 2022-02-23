@@ -1,7 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 import "./vote_reg.css";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 const VoteRegister = () => {
+  const history = useHistory();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -23,92 +26,75 @@ const VoteRegister = () => {
     if (name && email && description && type && rate) {
       axios
         .post("https://react-booking-demo.herokuapp.com/register", user)
-        .then((res) => console.log(res));
+        .then((res) => alert(res.data.message));
+      history.push("/reg-vote");
     } else {
-      alert("invalid");
+      alert("please fill out all fields!");
     }
   };
   return (
-    <>
-      <div className="container-md mt-4 mb-4">
-        <h1>Register Form</h1>
-        <form>
-          <div className="mb-3">
-            <label for="exampleInputUsername" className="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputUsername"
-              name="name"
-              value={user.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              name="email"
-              value={user.email}
-              onChange={handleChange}
-            />
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
-            </div>
-          </div>
-          <div className="mb-3">
-            <label for="exampleInputDescription1" className="form-label">
-              Description
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputDescription1"
-              name="description"
-              value={user.description}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="exampleInputType1" className="form-label">
-              Type
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputType1"
-              name="type"
-              value={user.type}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="exampleInputRate1" className="form-label">
-              Rate
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputRate1"
-              name="rate"
-              value={user.rate}
-              onChange={handleChange}
-            />
-          </div>
-
-          <button type="submit" onClick={register} className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div>
-    </>
+    <div className="container-md mt-4 mb-4">
+      <form>
+        <div className="mb-3">
+          <label className="form-label">Username</label>
+          <input
+            type="text"
+            name="name"
+            className="form-control"
+            value={user.name}
+            placeholder="Enter Your Username"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Email</label>
+          <input
+            type="text"
+            name="email"
+            className="form-control"
+            value={user.email}
+            placeholder="Enter Your Email"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Description</label>
+          <input
+            type="text"
+            name="description"
+            value={user.description}
+            className="form-control"
+            placeholder="Enter Your description"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Type</label>
+          <input
+            type="text"
+            name="type"
+            className="form-control"
+            value={user.type}
+            placeholder="Enter Your Type"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Rate</label>
+          <input
+            type="text"
+            name="rate"
+            value={user.rate}
+            className="form-control"
+            placeholder="Enter Your Rate"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="btn btn-primary" onClick={register}>
+          Vote
+        </div>
+      </form>
+    </div>
   );
 };
 
