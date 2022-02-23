@@ -1,0 +1,114 @@
+header {
+  background-color: #0097c2;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  flex-flow: row wrap;
+  margin: 0;
+}
+
+nav li {
+  padding: 10px 0;
+  position: relative;
+}
+
+.sub-menu {
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 100%;
+  z-index: 2;
+  width: 200px;
+  padding: 0;
+}
+
+nav li .main_menu-list {
+  display: block;
+  padding: 0 20px;
+  line-height: 60px;
+  font-size: 14px;
+  color: #000;
+  text-transform: capitalize;
+  font-weight: 600;
+  text-decoration: none;
+}
+nav li:hover .main_menu-list {
+  color: var(--clr-light);
+}
+nav li:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu li {
+  background-color: #0097c2;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sub-menu li a {
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #000;
+  text-decoration: none;
+  line-height: 20px;
+}
+.sub-menu li:hover {
+  background-color: #008fb8;
+}
+.sub-menu li:hover a {
+  color: var(--clr-light);
+}
+nav li .search-field form ion-icon {
+  position: absolute;
+  left: 0;
+  bottom: 15%;
+  font-size: 22px;
+}
+nav li .search-field form {
+  position: relative;
+  margin: 0 5px;
+}
+
+.search-field form input {
+  width: 100%;
+  margin: 0;
+  padding-left: 35px;
+  border-width: 0 0 1px 0;
+  background-color: transparent;
+  border-color: #ddd;
+  line-height: 40px;
+}
+
+.search-field form input:focus {
+  background-color: transparent !important;
+  border-color: #ddd;
+  outline: none;
+}
+
+#header {
+  background-color: var(--clr-light);
+}
+.top_header {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.top_header p {
+  margin-bottom: 15px;
+}
+.top_header p:first-child {
+  font-size: 26px;
+  color: #0097c2;
+  font-family: playfair;
+  font-weight: 800;
+}
+.top_header :last-child {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Playfair display bod italic;
+}
